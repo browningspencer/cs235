@@ -1,0 +1,261 @@
+What's the defining prperty of a Binary Search Tree
+
+	for every node in the tree
+		items in the left subtree are smaller
+		items in the right subtree are larger
+
+Draw an example BST on the board.
+
+			5
+		  /   \
+		4       8
+	  /        / \
+	 2        6   9
+	           \ 
+	             7
+
+How do you find an itme in a Binary Search Tree?
+	compare the item to the root
+	if smaller, repeat in the left subtree
+	if larger, repeat in the right subtree
+
+
+
+How do you find the smallest or largest item in a Binary Search Tree?
+
+			5
+		  /   \
+		3       6
+	  /  \       \
+	 1    4        9
+	  \           / 
+	    2        7
+	    		  \
+	    		    8
+
+
+
+
+
+Inserting
+
+How do you insert an item into a Binary Serach Tree?
+
+Show the result of inserting 3 into the BST
+
+			5
+		  /   \
+		4       8
+	   /       / \
+	  2       6   9
+	           \ 
+	             7
+
+			5
+		  /   \
+		4       8
+	   /       / \
+	  2       6   9
+	    \      \ 
+	      3      7
+
+
+Show the result of inserting 7 into the BST.
+
+			5
+		  /   \
+		3       8
+	           / \
+	          6   9
+
+
+			5
+		  /   \
+		3       8
+	           / \
+	          6   9
+	           \
+	            7
+Show the result of inserting 4 into the BST
+			7
+		  /   \
+		5       8
+	   / \       \
+	  2    6      9
+	 / \        
+	1   3       
+
+			7
+		  /   \
+		5       8
+	   / \       \
+	  2    6      9
+	 / \        
+	1   3  
+         \
+          4
+
+
+
+
+Removing
+
+How do you remove an item from a Binary Search Tree?
+
+Show the result of removing 3 from the BST.
+
+		  7					//LEAF 0-Child Case
+		 / \
+		5   8
+	   / \   \
+	  2    6  9
+	 / \        
+	1   3  	             
+
+		  7
+		 / \
+		5   8
+	   / \   \
+	  2    6  9
+	 /         
+	1    //3 becomes NULL and needs to be deleted from memory
+
+Show the results of removing 9 from the BST.
+
+		  5                  //1-child case
+		 / \
+		3   6
+	   / \   \
+	  1   4   9
+	   \     /  
+	    2   7
+	         \
+	          8
+
+		  5          
+		 / \
+		3   6
+	   / \   \
+	  1   4   7
+	   \       \
+	    2       8
+
+
+Show the result of removing 2 from the BST.
+
+		  7					//2-Child Case
+		 / \
+		2   8
+	   / \   \
+	  1   5   9
+	     / \        
+	    3   6
+	     \
+	      4  	             
+
+		  7					//1 or 3 could work in this case 
+		 / \				//but because of the CTR rule,
+		3   8				//you choose the right option
+	   / \   \     			//so it will be a 3
+	  1   5   9				//because 3 is the smallest
+	     / \        		//child on the right side
+	    4   6				//of the number being removed
+
+
+Show the result of removing 5 from the BST
+
+		  6					//1-Child Case
+		 / \
+		5   8
+	   /   / \
+	  2   7   9
+	 / \        
+    1   4
+	   /
+	  3   	             
+	      
+		  6					//
+        /   \
+	   2     8
+	  / \    / \
+	 1   4  7   9
+	    /
+	   3   
+
+
+Show the result of removing 3 from the BST
+		  3					//
+        /   \
+	   2     8
+	  /     / \
+	 1     5   9
+	      / \
+	     4   6
+	          \
+	           7 
+		  4					//
+        /   \
+	   2     8
+	  /     / \
+	 1     5   9
+	        \
+	         6
+	          \
+	           7
+
+
+Show the result of inserting 4 9 5 1 3 2 7 8 6 into a BST
+
+             4
+           /   \
+          1     9
+           \    /
+            3  5
+           /    \
+          2      7
+                / \
+               6   8
+
+Show the result of removing 4 5 6 from the BST.
+           
+
+             5
+            / \
+          1     9
+           \   /
+            3 7
+           / / \
+          2 6   8
+
+             6
+            / \
+          1     9
+           \   /
+            3 7
+           /   \
+          2     8
+
+             7
+            / \
+          1     9
+           \   /
+            3 8
+           /   
+          2    
+
+
+BST Run-Time
+
+What's the best-case height of a BST with N nodes?
+	the tree is balanced 
+	the height is O(log N)
+	find, insert, and remove are O(log N)
+What's the worst -case height of a BST with N nodes?
+	the tree is like a linked list
+	the height is O(N)
+	find, insert, and remove are O(N)
+
+What's the average-case height of a BST with N nodes?
+	the average case is 38% worse than the best case
+	the height is still O(log N)
+	find, insert, and remove are....

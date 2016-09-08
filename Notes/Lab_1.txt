@@ -1,0 +1,38 @@
+Lab 1
+
+NEED:
+
+Student Class
+	ID
+	Name
+	Address
+	Phone
+
+Grade
+	Course
+	ID
+	Grade
+
+School / (Main)
+	List Students
+	List Grades
+		The code for comparison is more or less given in the Lab 1 Documentation
+
+
+function()
+	double points(string grade) {
+		if ( ) { }
+		else if ( ) { }
+		else { }
+	}
+
+(List means Vector)
+
+Student file will look like this:
+	529173450
+	Dick B. Smith
+	805 Maple Road, Centralia, Colorado 24222
+	(312) 000-1000
+Read these ^ in
+
+use argv 1 - 4 for the different files (there are four files)

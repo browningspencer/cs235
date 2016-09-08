@@ -1,0 +1,299 @@
+//AVL tree is a common way of implementing a set<>
+
+Hash Tables (9.3)
+
+
+BSTs provide Set operations (add/remove/find) in O(log n) time.
+
+Hashing is able to do the operations in O(1) time in some cases.
+
+How can you find something in a large set in constant time?
+
+
+
+Suppose you need to create a set of employee ID numbers.
+Each ID number is between 1 and 1000.
+
+How can you store the numbers so you can add/remove/find in O(1) time?
+
+	1 - 1000
+	A[1001]
+	Add(id)
+		A[ID] = ID
+	Rem(ID)
+		A[ID] = -1
+	Find(ID)
+		Ret A[ID] = ID
+
+
+
+Could you use this approach to store larger numbers?
+
+Suppose you are storing only 1000 different numbers,
+but the numbers range in value rom 1 to 1000000.
+
+Would you make an array of size 1000000?
+
+
+Map the large numbers into numbers between 0 and 999
+
+	23456
+		23456 % 1000 = 456 //Hash function: to figure out the index I want for my value. 
+	add(ID) 				//This is an imperfect Hash, because there could be a value 
+		A[456] = 23456		//that has the same index and colides
+
+
+
+Could you use this approach to store items (like strings) that are not numbers?
+
+Convert the strings to numbers.
+
+	string "421"
+
+
+	abba = 1221 = 221
+
+
+
+
+
+
+
+
+Chaining
+
+How do you resolve collsions using Chaining?
+	the has table is an array of linked-lists
+	each list conains the items that hash to the same index
+
+
+Show the result of inserting 2, 7, 3, 8 into a hash table of size 5.
+
+Table 1
+	0	1	2	3	4
+------------------------
+  |    |   |   |   |   |
+  			^	^
+  			2	3
+  			^	^
+  			7	8
+
+How do you find an item in a hash table using Chaining?
+	use the hash function to select a list in the table
+	sequentially serach the list for the item
+
+Show the result of finding 8 and 12 in the hash table.
+8 % 5 = 3	//this is how you find the index of the value you are searching for
+12 % 5 = 2
+
+Table 1
+	0	1	2	3	4
+------------------------
+  |    |   |   |   |   |
+  			^	^
+  			2	3
+  			^	^
+  			7	8
+
+
+
+Table 2
+	0	1	2	3
+---------------------
+  |    |   |   |   |  
+  		^	^	^
+  		1	6	7
+  		^	^	
+  		9	2	
+
+Preformance Analysis of Chaining
+
+What's the Load Factor of a hash table?
+	the number of items in the table divided by the table size
+
+	LoadFactor = n/m
+		n is the number of items in the table
+		m is the size of the array used for the table
+
+How does the Load Factor affect teh performance of a hash table?
+	Table 1 is 4/5
+	Table 2 is 5/4
+How many compares are needed (on average) to find an item
+in a chaining hash table?
+	Compares = 1 + LoadFactor/2 (for a successful search)(Knuth, vol 3)
+		(the average number of items in each bucket is L)
+
+	1.25 compares when Load Factor is 0.5
+	1.50 compares when Load Factor is 1.0
+	2.00 compares when Load Factor is 2.0
+
+
+What's a good Load Factor to use with chaining?
+	
+	1.0
+
+	lower doesn't significantly improve preformcance
+	higher can save space
+
+
+
+
+
+
+
+What's the Big-Oh bound of add/remove/find for a chaining hash table?
+
+	average-case is O(n/m)  (items distributed evenly over the buckets)
+
+	worst-case is O(n)      (all items hash to the same bucket)
+		because of a bad hash function that doesn't organize the buckets very well
+
+
+Which is better Hashing or AVL trees?
+
+	hashing is O(1)	    (average case)
+	trees are O(log n)  (worst case)
+
+	hashing is simpler
+	trees keep data sorted
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hash Functions
+
+
+
+What are the characteristics of a good Hash Function?
+
+	1. gives a number between 0 and tableSize-1				//Will always have a % number size
+	2. easy and fast to compute								
+	3. distributes items evenly throughout the hash table
+
+
+
+Would it make sense to use random numbers in a hash function
+to help ensure an even distribution of items?					
+	
+	No because it needs to have consistancy when you index something similar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What's a typical hash function for integers?
+
+
+	value % tableSize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A hash function for Strings must convert a String to a number.
+What's wrong with this code for converting a String to a number?
+
+How large can hashCode be for a string of 10 characters?			//I want the Load Factor to be 1, but it doesn't produce indexes large enough
+What's true about hashCode for two strings like "bat" and "tab"?	//Even though these have different orders, they will cause collsions
+																	//Has a ordering problem and will create indexes that are too small (< 1000)
+
+	unsigned hashCode( string item, unsigned tableSize ) {
+
+	    unsigned hashCode = 0;
+
+	    for (unsigned i = 0; i < item.length(); i++)
+	        hashCode = hashCode + item.at(i);
+
+	    return hashCode % tableSize; 					//Will return a simple summation of all the %
+
+	}
+
+"ddddddddddddddd"
+ ^
+100
+
+Table 3
+____________________________
+|__________________________|
+
+table is 10^6 (million)
+
+
+
+
+
+
+
+
+
+
+
+
+How is this hash function better than the previous one?
+
+
+	unsigned hashCode( string item, unsigned tableSize ) {
+
+	    unsigned hashCode = 0;
+
+	    for (unsigned i = 0; i < item.length(); i++)
+	        hashCode = hashCode * 31 + item.at(i);  		//the * 31 is the only difference
+	        												//Now it's going to make numbers that are greater than 1000
+	    return hashCode % tableSize;						
+
+	}
+
+
+		Why 31?
+			It's a prime number
+			It's a about the same size of the alphabet
+			People just started using it because it seems to work well
+			the number 2 or 7 would probably work as well
+
+
+
+
+
+
+
+
+
+
+
+
+

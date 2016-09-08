@@ -1,0 +1,166 @@
+Big O - Upper bound
+Omega - Lower bound
+Theta - Both
+
+Can you have more than one algorithm that solves a given problem?
+	Yes
+	Searching: sequential vs. binary
+	Sorting: selection, insertion, merge, quick, heap
+
+How do you choose which algorithm you will use?
+	1. simplest
+	2. smallest
+	3. fastest
+
+How do you know how much time an algorithm will use?
+	1. measure the running time
+	2. predict the running time through analysis
+
+
+
+
+
+
+Give the function T(n) for the number of time units used by the code. (Assume each statement uses one time unti.)
+
+	double sum = 0;
+	for (int i = 0; i < n; i++)
+		sum += a[i];
+	double mean = sum / n;
+	return mean;
+
+T(n) = 3n + 5
+
+
+
+
+Big Oh
+
+Suppose you have T(n) = n^2 + 2n + 4
+Does it make sense to define T(n) this precisely?
+
+	NO
+
+	1. when n is large, the high-order term dominates
+		n^2 + 2n + 4 = 1002004 when n is 1000
+
+	2. when n is small, time is not an issue
+
+	3. constant factors depend on machine and complier
+
+	4. the rate of growth is what is important
+
+
+
+How do you represent the growth rate of T(n)?
+
+	use Big Oh nothation
+	(abstraction of time formula)
+
+	1. keep the dominat term
+	2. dorp lower-order terms
+	3. drop constants
+
+
+
+What's the definition of BigOh?
+
+	T(n) is O(f(n))
+
+	if there exists positive constants c and n0 such that
+
+	T(n) <= c*f(n)
+
+	for all n >= n0
+
+
+
+
+
+Finding The BigOh
+
+How do you find the Big-Oh for an Algorithm?
+
+What's the Running Time of a simple statement?
+
+	small = 1;
+	
+	O(1)
+
+What's the Running Time of a block of simple statements?
+
+	temp = A[small];
+	A[small] = A[i];
+	A[i] = temp;
+
+	O(1)
+
+What's the Running Time of a Loop?
+
+	1. find the BigOh for the body of the loop
+	2. multiply by the numer of times the loop repeats
+
+	for (i = 0; i < n; i++)
+		A[i][i] = 1;
+
+	O(n)
+
+
+	for (i = 0; i < n; i++)
+		for (j = 0; j < n; j++)
+			jioewfijo;
+
+	O(n^2)
+
+
+
+
+What's the RUnning TIme of a selection statement?
+
+	1. find the BigOh for the if part
+	2. find the BigOh for the else part
+	3. use the larger of the two BigOh's
+
+	If ()
+		for ()
+	else 
+		for ()
+			for ()
+
+	O(n^2)
+
+
+
+
+
+
+O(1)			CONSTANT
+O(n) 			LINEAR
+O(log(n)) 		LOGARITHMIC
+O(n^2) 			QUADRATIC (x4 as long runtime)
+O(n^3) 			CUBIC (x8 as long runtime)
+O(2^n) 			EXPONENTIAL (Very bad)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

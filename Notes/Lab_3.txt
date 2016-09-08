@@ -1,0 +1,73 @@
+Dictionary File
+	The only words that can be used
+
+
+Board File
+	the white space is not always correct
+	example:
+		R B
+		 O O I
+		T  R O H
+	should be
+		r b o
+		o i t 
+		r o h
+
+	string s;
+	in >> s;
+
+Board Class
+	represent it as a vector(vector<string>); 
+	force all strings to lower case
+	in >> s;
+	Say if n = 9
+	size = sqrt(n); //Size would be the row/column size
+
+	findWords()
+		for each row
+			for each column
+				find(row, column)
+
+	find(row, column)
+OFF
+BOARD
+BASE
+CASE ->
+		Append tile[row][col]
+			To Word
+ALREADY 
+USED
+BASE
+CASE ->
+PREFIX
+BAD
+BASE 
+CASE -> 
+		find(R, C + 1)
+			(R, C - 1)
+			(R - 1, C)   //8 Recursive
+
+
+
+
+Dictionary Class
+	represent it as a set<string>;
+	checkPrefix(string) //would tell me if it's a prefix of						//any of the words in the dictionary
+		iterator i = set.lower_bound(string "ca") 
+		*i = cat
+				//lower bound g
+
+		if 
+			i = set.lower_bound(zz)
+			i = set.end()
+
+
+
+
+Don't use "new"
+
+Don't open a test file and copy and paste it
+	Do Save as instead
+
+It will always be a perfect square
+

@@ -1,0 +1,65 @@
+Build an AVL Tree Set
+
+5 commands
+	clear
+	add
+	print
+	find 
+	remove
+
+1. Use the command reader from project 5 and modify it
+2. Get Print function working
+
+EXAMPLE
+
+	CLEAR
+	add bob
+
+		bob
+
+	add joe
+
+		bob
+		 \
+		  Joe
+
+	add jim
+
+		bob
+		 \
+		  Joe
+		  /
+		 Jim
+
+	Now it needs to be rotated
+
+		jim
+		/ \
+	bob		joe
+
+	print
+		level 0: jim(2) 
+
+			Use a Linked List<Node*>
+			Add Root to Q
+			While Q not empty
+				output level number
+				size = Q.size
+				loop size times
+				Remove n from Q 
+				Output n.item
+				add n's children to Q //Don't add if it's NULL
+			end while
+
+	Balance
+		BAL (&n)
+			if height(n.left)-hieght(n.right) > 1
+				BALR (n) //balance right
+			else if height(n.right) - height(n.left) > 1
+				BALL(n)
+
+
+		BALRight(n)
+			if height(n.left.right) > height(n.left.left)
+				RL(n.left)
+			RR(n)

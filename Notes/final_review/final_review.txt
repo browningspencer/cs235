@@ -1,0 +1,736 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Give the worst-case BigOh bounds on the running time 
+for the given operations on the given data types.
+Assume that all data structures have been implemented well.
+
+
+    get on an Array List  O(1)
+    get on a Linked List  O(n)
+    push on a Stack       O(1)
+    pop on a Stack        O(1)
+    add on a Queue        O(1)
+    remove on a Queue     O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Consider a stack that is implemented using an array with space for four items.
+The four positions in the array have indexes 0, 1, 2, and 3.
+The variable top contains the index of the item on the top of the stack.
+(Note that for some implementations of an array stack, top contains the 
+index of the next available space beyond the item on the top of the stack.
+This is not true of this implementation.)
+The stack is initially empty. The variable top is initialized to -1.
+Give the content of each position in the array and the index stored
+in top after each of the following stack operations are executed.
+
+0 1 2 3 top
+
+push(4)
+push(2)
+pop()
+push(8)
+push(3)
+pop()
+push(1)
+push(7)
+pop()
+
+
+0 1 2 3 top
+------------
+        -1
+
+0 1 2 3 top
+------------ push(4)
+4        0 
+
+0 1 2 3 top
+------------ push(2)
+4 2      1 
+
+0 1 2 3 top
+------------ pop()
+4        0
+
+0 1 2 3 top
+------------ push(8)
+4 8      1
+
+0 1 2 3 top
+------------ push(3)
+4 8 3    2
+
+0 1 2 3 top
+------------ pop()
+4 8      1
+
+0 1 2 3 top
+------------ push(1)
+4 8 1    2
+
+0 1 2 3 top
+------------ push(7)
+4 8 1 7  3
+
+0 1 2 3 top
+------------ pop()
+4 8 1    2
+
+
+There will not be a problem that will require you to grow your array
+
+
+Consider the List class below which implements a doubly-linked list.
+The variable head points to the first node on the list.
+The variable tail points to the last node on the list.
+The list does not use header nodes and the list is not circular.
+The next pointer in the last node is null and 
+the prev pointer in the first node is null.
+When the list is empty both head and tail are null.
+
+class List {
+    struct Node {
+        ItemType item;
+	      Node* next;
+        Node* prev;
+    }
+    Node* head;
+    Node* tail;
+
+    void insertList (List* list, Node* where) {
+
+    }
+}
+
+
+The insertList method inserts a list into the middle of another list.
+The list 'list' is inserted following the node 'where'.
+The resulting list uses the existing nodes from the original lists.
+InsertList connects the node 'where' to the first node from 'list'.
+InsertList connects the last node from 'list' with the node following 'where'.
+Implement the insertList method.
+
+The following is true at the beginning of the method:
+
+a. list and where are non-null
+b. The two lists have no nodes in common.
+
+
+LIST //LIST is a pointer to the list
+    head    tail
+      \      /
+       4 -> 2->NULL
+NULL<-   <-
+
+
+        where
+    head   \      tail
+      \     \      /
+       6 ->  8 -> 3->NULL
+NULL<-   <-    <-
+
+
+SUDO CODE
+  where->next->prev = LIST->tail  //This will make the 3 in  point to the 2 in LIST
+  LIST->tail->next = where->next  //This will make the 2 in LIST point to 3 in 
+  where->next = LIST->head        //This will make the 8 in  point to the 4 in LIST
+  LIST->head-prev = where         //This will make the 4 in LIST point to 8 in 
+
+
+Your code must work correctly in general and in particular
+for all of the following special cases:
+
+a. list is an empty list
+  if (LIST->head == NULL || LIST->tail == NULL)
+    return
+
+b. where is the first node of the target list
+  Already taken care of in SUDO CODE
+
+c. where is the last node of the target list
+  if (where == tail)
+    tail = LIST->tail
+  else {
+      where->next->prev = LIST->tail 
+      LIST->tail->next = where->next  
+    }
+    where->next = LIST->head      
+    LIST->head-prev = where  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List the labels of the nodes of the binary tree in preorder,
+postorder, and inorder.
+
+
+               A
+              / \
+             B   C
+            / \   \
+           D   E   F
+              /   / \
+             G   H   I
+              \
+               J
+              /
+             K
+
+
+preorder   
+postorder  
+inorder	   
+
+
+
+preorder - Parent first, then Left subtree, then Right Subtree
+A B D E G J K C F H I
+postorder - Left Subtree first, Right Subtree, Parent
+D K J G E B H I F C A
+inorder  - Left, parent, right
+D B G K J E A C H F I
+
+
+
+
+
+
+
+
+
+Consider the Node class below which implements  a node in a binary tree.
+
+    struct Node {
+        ItemType item;
+	      Node* left;
+        Node* right;
+    }
+
+Write a recursive method to count number of non-leaf nodes in a binary tree.
+
+
+ONE WAY TO WRITE IT:
+    int count(Node *n)
+      if n == NULL
+        return 0
+      else if n->left == NULL && n->right == NULL
+        return 0
+      else 
+        return count(n->left) + cout(n->right) + 1
+
+
+
+
+
+
+Give the average-case and worst-case BigOh bounds for the 
+running time for the given operations on the given data types.
+Assume that all data structures have been implemented well.
+
+
+     find on a BST
+     find on an AVL BST
+     find on a hash table
+     insert on a heap
+     remove on a heap
+     heapify on an array
+
+
+                            AVG         WORST
+     find on a BST          O(logn)     O(n)
+     find on an AVL BST     O(logn)     O(logn)
+     find on a hash table   O(1)        O(n)
+     insert on a heap       O(1)        O(logn)
+     remove on a heap       O(logn)     O(logn)
+     heapify on an Array    O(n)        O(n)
+
+
+
+
+
+
+Insert a node with label 3 into the binary search tree.
+Do not do any rebalancing of the tree.
+Draw the tree that results.
+
+
+               5
+              / \
+             1   6
+            / \   \
+           0   4   8
+              /   / \
+             2   7   9
+
+
+
+               5
+              / \
+             1   6
+            / \   \
+           0   4   8
+              /   / \
+             2   7   9
+              \
+               3
+
+
+
+
+
+
+Delete the node with label 1 from the binary search tree.
+Do not do any rebalancing of the tree.
+Draw the tree that results.
+
+
+               5
+              / \
+             1   6
+            / \   \
+           0   4   8
+              /   / \
+             2   7   9
+              \
+               3
+
+               5
+              / \
+             2   6
+            / \   \
+           0   4   8
+              /   / \
+             3   7   9
+              
+              
+
+
+
+
+
+Insert a node with label 3 into the AVL binary search tree.
+Perform any needed rotations to maintain the AVL property.
+Draw the tree that results.
+
+
+                 7
+                / \
+               4   8
+              / \   \
+             1   5   9
+            / \   \
+           0   2   6
+
+                 7
+                / \
+               4   8
+              / \   \
+             1   5   9
+            / \   \
+           0   2   6
+                \
+                 3
+
+                 4
+                /  \
+               /     \
+              1       7
+             / \     / \
+            0   2   5   8
+                 \   \   \
+                  3   6   9
+             
+             
+
+
+
+
+Delete the node with label 2 from the AVL binary search tree.
+Perform any needed rotations to maintain the AVL property.
+Draw the tree that results.
+
+
+               4
+              / \
+             2   7
+            /   / \
+           1   5   8
+                \   \
+                 6   9
+
+
+               4
+              / \
+             1   7
+                / \
+               5   8
+                \   \
+                 6   9
+
+               7
+              / \
+             4   8
+            / \   \
+           1   5   9
+                \   
+                 6   
+
+
+
+
+
+Delete the node with label 2 from the AVL binary search tree.
+Perform any needed rotations to maintain the AVL property.
+Draw the tree that results.
+
+
+               7
+              / \
+             4   8
+            / \   \
+           1   5   9      //double rotation
+         / \    /\   
+        0   2 4.5 6
+                   \
+                    6.5  
+
+
+               7
+              / \
+             5   8
+            / \   \
+          4    6   9
+         / \    \   
+        1   4.5  6.5
+       / \         
+      0   2             
+
+
+               5
+              / \
+            4     7
+           / \     /\
+          1  4.5  6  8
+         / \       \   \
+        0   2      6.5  9
+              
+       
+
+The following array contains a MIN heap.
+Insert a node with label 0 into the MIN heap.
+Give the array representation of the MIN heap that results.
+
+
+1 2 3 4 7 8 6 9 5
+
+
+
+1 2 3 4 7 8 6 9 5
+
+        1
+      /   \
+     2     3
+    / \   / \
+   4   7 8   6
+  / \   \
+ 9   5   0
+
+
+        0
+      /   \
+     1     3
+    / \   / \
+   4   2 8   6  //INSERT is percolate up, everything else is percolate down
+ / \  /
+9  5  7 
+
+0 1 3 4 2 8 6 9 5 7
+
+
+
+The following array contains a MIN heap.
+Execute the remove operation on the MIN heap.
+Give the array representation of the MIN heap that results. //Remove on a HEAP always removes from the top
+
+
+1 2 3 4 7 8 6 9 5
+
+        1
+      /   \
+     2     3
+    / \   / \
+   4   7 8   6
+  / \   
+ 9   5   
+
+        5
+      /   \
+     2     3
+    / \   / \
+   4   7 8   6 //always grab the last one on the bottom level
+  /    
+ 9    
+
+        2
+      /   \
+     4     3
+    / \   / \
+   5   7 8   6 
+  /    
+ 9   
+
+2 4 3 5 7 8 6 9
+
+
+
+
+Execute the heapify operation on the array to create a MIN heap.      //Heaps are useful for Priority Queues
+Give the array representation of the MIN heap that results.
+
+
+9 1 8 2 7 3 6 4 5
+
+        9
+      /   \
+     1     8
+    / \   / \
+   2   7 3   6
+  / \   
+ 4   5   
+
+        9
+      /   \
+     1     3
+    / \   / \
+   2   7 8   6
+  / \   
+ 4   5   
+
+
+        1
+      /   \
+     2     3
+    / \   / \
+   4   7 8   6
+  / \   
+ 9   5   
+
+1 2 3 4 7 8 6 9 5
+
+
+
+Suppose the following array is given as input to heap sort.
+
+9 1 8 2 7 3 6 4 5
+
+After completing heapify to make a MAX heap, the array is:
+
+9 7 8 5 1 3 6 4 2                      //grab top value, replace with last. Then percolate down before grabbing next
+
+2 7 8 5 1 3 6 4 | 9
+8 7 2 5 1 3 6 4 | 9
+8 7 6 5 1 3 2 4 | 9     8 7 6 5 1 3 2 4 | 9
+
+4 7 6 5 1 3 2 | 8 9
+7 4 6 5 1 3 2 | 8 9
+7 5 6 4 1 3 2 | 8 9     7 5 6 4 1 3 2 | 8 9
+
+6 5 2 4 1 3 | 7 8 9
+6 5 3 4 1 2 | 7 8 9     6 5 3 4 1 2 | 7 8 9
+
+2 5 3 4 1 | 6 7 8 9
+5 2 3 4 1 | 6 7 8 9
+5 4 3 2 1 | 6 7 8 9     5 4 3 2 1 | 6 7 8 9
+
+1 4 3 2 | 5 6 7 8 9
+4 1 3 2 | 5 6 7 8 9
+4 2 3 1 | 5 6 7 8 9     4 2 3 1 | 5 6 7 8 9
+
+1 2 3 | 4 5 6 7 8 9
+3 2 1 | 4 5 6 7 8 9     3 2 1 | 4 5 6 7 8 9 
+
+1 2 | 3 4 5 6 7 8 9
+2 1 | 3 4 5 6 7 8 9     2 1 | 3 4 5 6 7 8 9
+
+1 | 2 3 4 5 6 7 8 9     1 | 2 3 4 5 6 7 8 9 
+
+Give the content of the array after each major step of the remainder
+of heap sort.
+(In other words, we've already done the heapify part of heap sort for
+you. Beginning at that point, you need to give the content of the
+array after the completion of each major step of the algorithm. A
+major step is a swap followed by a percolate down.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Insert the following values into the hash table below.
+Use Chaining to resolve collisions.
+Do not grow the table or do any rehashing.
+Use the hash function h(x) = x % hash_table_size.
+
+
+39  48  25  32
+
+
+ 0  1  2  3  4  5  6
+
+
+
+
+39 % 7 -> 4
+
+0  1  2  3  4  5  6
+           39
+
+48 % 7 -> 6
+
+0  1  2  3  4  5  6
+           39    48
+
+25 % 7 -> 4
+
+0  1  2  3  4  5  6
+           39    48
+           25
+
+32 % 7 -> 4
+
+0  1  2  3  4  5  6
+           39    48
+           25
+           32
+
+
+Insert the following values into the hash table below.
+Use Linear Probing to resolve collisions.
+Do not grow the table or do any rehashing.
+Use the hash function h(x) = x % hash_table_size.
+
+
+39  48  25  32
+
+
+ 0  1  2  3  4  5  6
+
+
+39 % 7 -> 4
+
+0  1  2  3  4  5  6
+           39
+
+48 % 7 -> 6
+
+0  1  2  3  4  5  6
+           39    48
+
+25 % 7 -> 4
+
+0  1  2  3  4  5  6
+           39 25 48
+           
+32 % 7 -> 4
+
+0  1  2  3  4  5  6
+32         39 25 48
+
+
+
+
+
+Insert the following values into the hash table below.
+Use Quadratic Probing to resolve collisions.
+Do not grow the table or do any rehashing.
+Use the hash function h(x) = x % hash_table_size.
+
+
+ 24  39  17  46
+
+
+ 0  1  2  3  4  5  6
+
+
+24 % 7 -> 3
+
+0  1  2  3  4  5  6
+        24
+
+39 % 7 -> 3
+
+0  1  2  3  4  5  6
+        24 39
+
+
+17 % 7 -> 3
+3 + 0^2 ->3
+3 + 1^2 ->4
+3 + 2^2 ->7 ->0
+
+0  1  2  3  4  5  6
+17       24 39
+
+
+46 % 7 -> 4
+4 + 0^2 -> 5
+4 + 1^2 -> 5
+
+0  1  2  3  4  5  6
+17       24 39 46
+
+
+
+
+
+

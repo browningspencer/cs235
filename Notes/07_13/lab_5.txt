@@ -1,0 +1,12 @@
+LinkedList<string> list;
+
+while (in >> CMD) //CMD is a string
+	if(CMD == "insert")
+		in >> index;
+		in >> item;
+		list.insert(index, item)
+
+
+
+header file
+	Change the Class Node to Struct Node

@@ -1,0 +1,11 @@
+clear
+add ba
+add ab
+add bd
+add aa
+add bb
+add bf
+add bc
+print
+remove ba
+print

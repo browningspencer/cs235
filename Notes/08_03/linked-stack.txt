@@ -1,0 +1,178 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linked List Stack (5.3)
+
+
+PUSH ITEM
+	n = new NODE
+	n->item = item
+	n->next = HEAD
+	HEAD = n
+	size++
+
+
+POP ITEM
+	n = head
+	item = n->item
+	head = n->next
+	delete n
+	size--
+	return item
+
+
+
+
+Draw a diagram of a Linked-List Stack object on the board.
+
+What instance variables are needed inside a Linked-List Stack object?
+
+Which end of the list should be the top of the stack?
+
+
+
+
+
+STACK
+	___           ___
+   |   | Items   |   |  CAP.
+   |   |         | 4 |
+   |___|         |___|
+		\
+       ___ ___ ___ ___
+ 	  |   |   |   |   |
+ 	  | 4 | 2 |   |   |
+ 	  |___|___|___|___|
+        0   1   2   3
+
+    ___
+   |   |  size
+   | 2 |
+   |___|
+
+
+PUSH ITEM
+	if size == cap
+		grow
+	items[size] = item
+	size++
+
+
+How does the push method work?
+
+Show how push works on the diagram on the board.
+
+Write the code for the push method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How does the pop method work?
+
+Show how pop works on the diagram on the board.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Classwork
+You may work with a partner.
+
+Write the code for the pop method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What's the Big-Oh bound for push and pop?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Memory Management
+
+
+Why does the Stack need a destructor?
+
+Write the code for the destructor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

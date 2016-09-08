@@ -1,0 +1,1 @@
+For the test files, don't copy and paste it, as it might mess up the white spaces. Instead, download the txt files into the folder you want them.

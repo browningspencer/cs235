@@ -1,0 +1,21 @@
+
+List the nodes of the tree in postorder.
+
+
+		    	A
+		      /   \
+		    B       C
+		  / | \   / | \
+		 D  E  F G  H  I
+		/     / \    \
+	   J     K   L     M
+	        /
+	       N
+
+
+Write the code for a postorder traversal.
+
+//POSTORDER
+//CHILD
+//PARENT
+JDENKLFB GMHIC A

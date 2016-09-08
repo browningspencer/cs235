@@ -1,0 +1,229 @@
+What's an AVL tree?
+
+	a Binary Search Tree
+	with insert and remove algorithms that keep the tree balanced
+
+How well des an AVL tree stay balanced?
+	the worst case height is about 1.5 times the best case
+	find, insert, and remove 
+
+
+The AVL Balance Property
+
+	for every node in the tree
+	the height of the left and right subrees differ by at most 1
+
+Draw an example AVL tree on the board.
+
+			  5
+		   / \
+		  4   8
+		 /   / \
+		2   6   9
+		     \
+		      7
+
+
+Is the tree an AVL Tree?
+If not, identify where the balance property is voilated.
+
+          5
+         / \
+        3   6
+       / \   \
+      1   4   9		//the 6 and 9 are violated
+       \     /		      
+         2  7
+             \
+               8
+
+Finding
+	the same as BST ?
+
+
+Insert
+
+How do you insert an item into an AVL Tree?
+	first insert as in a standard BST
+	then look for nodes that are out of balance
+	if needed, resotre balance using rotations
+
+Show the result of inserting 0 into the AVL Tree
+
+       4
+        \
+         7
+
+        4
+         \
+          7
+           \
+            9 //unbalanced, needs to be rotated
+
+         7
+        / \
+       4   9   
+
+
+Show the result of inserting 5 into the AVL Tree.
+
+            3
+           / \
+          2   8
+         /   / \
+        1   7   9		
+           /
+          6
+
+
+            3
+           / \
+          2   8
+         /   / \
+        1   7   9		//3 8 7 are all unbalanced
+           /			//Rotate the one most out of balance
+          6				//Which would be 7
+         /
+        5
+
+
+            3
+           / \
+          2   8
+         /   / \
+        1   6   9		
+           / \
+          5   7
+
+
+Show the result of inserting 8 into the AVL Tree.
+
+
+            3
+           / \
+          2   5
+         /   / \
+        1   4   7		
+               / \
+              6   9
+
+            3
+           / \
+          2   5
+         /   / \
+        1   4   7		//3 5 are all unbalanced
+               / \
+              6   9
+                 /
+                8
+
+            3
+           / \
+          2   7
+         /   / \
+        1   4     9		//Rotate 
+           / \   /
+          4   6 8  
+
+
+
+Rotations
+
+What are the steps of Single Right Rotation?
+
+//Sudo code
+	let n be the node that is out of balance
+	let k be the left child of n
+
+	make the parent of n point to k instead of n
+		
+	make n's left child pointer point to k's right child
+		
+	make k's right child pointer point to n
+		
+
+		RotateRight(&n)
+			k = n.left
+			n.left = k.right
+			k.right = n
+			n = k
+			//Rotate Left is just the opposite
+
+How do you know if rotations are needed?
+	look for nodes that violate the AVL property
+
+Do you have to check all the nodes in the tree?
+Where will you find the unbalanced nodes?
+	only look on the path from the root to the newly added node
+
+An insertion can cause mroe than one node to be unbalanced.
+Do you need to do a rotation for each of the unbalanced nodes?
+	no, only do one rotate at the deepest node
+                
+
+
+
+-----------------Double Rotation-------------------
+
+
+
+	DRR(&n)
+		RL(n.left) //Rotate Left
+
+		RR(n)  //Rotate Right
+
+Show the result of inserting 6 into the AVL Tree.
+
+		4
+		 \
+		  7
+
+		4
+		 \
+		  7
+		 /
+		6
+
+		6
+	   / \
+	  4	  7		               
+
+
+How do  you recognize that a double rotation is needed?
+	the right child is higher and the right-left grandchild is higher
+	the left child is higher and the left-right grandchild is higher 
+
+	single rotate fails
+
+
+
+
+
+-------------------Remove------------------------
+
+Show the results of removing 9 from the AVL Tree
+
+                    7
+                   / \
+                  3   8
+                 / \   \
+                2	5   9
+                   / \
+                  4   6
+
+                    7
+                   / \
+                  5   8
+                 / \   
+                3	6   
+               /    
+              2      
+
+                    5
+                   / \
+                  3   7
+                 /\   /\
+                2  4 6  8  
+                                                     
+
+                                                     

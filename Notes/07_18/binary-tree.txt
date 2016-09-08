@@ -1,0 +1,83 @@
+//*see Tree.h  && testTree.cpp  
+
+
+NODE
+________________
+|	Item		|
+|_______________|
+|Left	|Right	|
+|_______|_______|
+
+
+
+What's a Binary Tree?
+	a tree where each node has at most two children?
+
+
+What are some applications of binary trees?
+
+	binary search trees
+	expression trees
+	priority trees
+
+List the nodes of the tree in preorder.
+Write the code for a preorder traversal.
+
+				A
+			  /   \
+			 B     C
+			/ \   /
+		   D   E F
+		      /   \
+		     G 	   H
+		      \
+		       I
+
+//PREORDER
+//PARENT
+//CHILD (RECURSIVE)
+			ABDEGI CFH		   
+
+List the nodes of the tree in postorder.
+Write the code for a postorder traversal
+
+
+				A
+			  /   \
+			 B     C
+			/ \   /
+		   D   E F
+		      /   \
+		     G 	   H
+		      \
+		       I
+
+//POSTORDER
+//CHILD
+//PARENT
+			DIGEB HFC A
+
+
+
+
+//INORDER
+//LEFT CHILD
+//PARENT
+//RIGHT CHILD
+DBGIE A FHC
+
+
+What's a Binary Search Tree?
+
+
+What's the average-case time for finding an item in a List?
+	O(n)
+
+What's the average-case time for finding an item in a BST?
+	O(log n)
+
+How many steps are needed to find an item in a 1,000,000-item List?
+	an average of 500,000 steps
+
+How many steps are needed to find an item in a 1,000,000-item BST?
+	an average of 20 steps

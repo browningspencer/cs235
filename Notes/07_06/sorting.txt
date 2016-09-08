@@ -1,0 +1,188 @@
+What's Sorting?
+
+
+Why is Sorting Important?
+
+	1. people can process data better when it is sorted 
+
+		words in a dictionary
+		index of a book
+
+	2. some algorithms are faster when the imput is sorted
+
+		binary search
+		finding duplicates
+
+
+
+Selection Sort
+
+How does Selection Sort work?
+
+	keep a mark betwee nthe sorted and unsorted parts
+	the sorted part starts empty
+
+	find the smallest item in the unsorted part
+	swap it with the first itme in the unsorted part
+
+	move the mark one place and repeat
+
+
+Show each step of Selection Sort on the List.
+
+	| 5 4 3 1 2
+	1 | 4 2 5 2
+	1 2 | 3 5 4
+	1 2 3 | 5 4
+	1 2 3 4 | 5
+
+
+	| 5 2 7 3 4
+	2 | 5 7 3 4
+	2 3 | 7 5 4
+	2 3 4 | 5 7
+	2 3 4 5 | 7
+
+Selection Sort Code
+
+	for each i from 0 to size-2
+
+		min = i
+		for each j from i+1 to size-1
+			if list [j] < list[min]
+				min = j
+
+		swap list[i] and list[min]
+
+	end
+
+What's the running time for SElection Sort?
+
+Does the running time for Selection Sort depend on
+the kind of input you give it?
+	No it doesn't. If you gave it a code already sorted, it
+	would still take the same amount of time.
+
+
+
+Insertion Sort
+
+How does it work?
+	keep a mark between the sorted and unsorted parts 
+	the sorted part stars with the first item
+
+	remove the first item from the unsorted part
+	insert it into the sorted part
+
+	move the mark one place and repeat
+
+Show each step of Insertion Sort on the list
+
+	5 | 2 7 3 4
+	2 5 | 7 3 4
+	2 5 7 | 3 4
+	2 3 5 7 | 4
+	2 3 4 5 7 |
+
+	8 | 5 2 7 3
+	5 8 | 2 7 3
+	2 5 8 | 7 3
+	2 5 7 8 | 3
+	2 3 5 7 8 |
+
+
+Insertion Sort Code
+	for each i from 1 to size-1
+
+		j = i 
+		item = list[j]
+
+
+
+
+
+
+Merge Sort
+
+	  85462341
+	8546	2341
+  85	46	23	41
+8	5	4	6	2	3	4	1
+  58	46	23	14
+	4568	1234
+	  12344568
+
+log(n)
+
+
+
+
+Quick Sort
+
+	if the size of the List is at least 2
+		select an item in the List to use as the pivot
+		partition the List into small, equal, large Lists
+			(small, equal, large compared to pivot)
+		recursively sort small
+		recursively sort large
+		concatenate small, equal, and large into one list
+	end if
+
+Show the steps Quick Sort on the LIst.
+Give the List after each partition and concatenate step.
+Use the item in the middle position as the pibot
+
+	981643752
+132		4	98675
+123			56789
+	123456789
+
+
+			981643752
+		132		4	98675			Partition
+	12	3		5	6	987			Partition
+  1  2					7	8	9	Partition
+  	12					789
+  		123			56789
+  			123456789
+O(nlog(n))
+O(n^2)
+
+
+
+Selecting the Pivot
+
+What's the Big-Oh for Quick Sort in the Best-Case?
+	O(nlog(n))
+What's the Worst-Case partitioning for Quick Sort?
+	O(n^2)
+What's the Big-Oh for Quick Sort in the Average-Case?
+	O(nlog(n))
+
+What's the result of using the First or Last item as the Pivot?
+	You'd get a O(n^2)
+	So Never Ever do it
+
+What's the result of using the Middle Item as the Pivot?
+	You'd get a O(nlog(n))
+	It's simple and a good choice to do
+
+
+
+Median of Three
+
+What's the median of a list of numbers?
+	There are the same number on either side of it.
+Why not use the median value from the List as the Pivot?
+	IDK
+How can you estimate the median?
+	Look at three numbers
+
+Find the Median-of-three for each list of numbers.
+	8 5 4 6 2 3 1
+	
+
+	4 9 3 5 7 6 2
+
+
+

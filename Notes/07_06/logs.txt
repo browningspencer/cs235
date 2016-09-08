@@ -1,0 +1,68 @@
+An important truth about logs
+
+	log(a*b) = log(a) + log(b)
+
+
+How does the number of bits in a binary number compare to
+the number of digits in an equivalent decimal number?
+
+	log2(n) is about 3.3 * log10(n)
+
+When logarithms are used in Big-Oh formulas, the base is ignored because it is a constant
+
+
+Log's in Big-Oh's
+
+If you start with X = 1, how many times you can double X 
+before X becomes greater than or equal to N?
+	log(N)
+
+If you start with X = N, how many times you can cut X in half
+before X becomes less than or equal to 1?
+	log(N)	
+
+for ( int x = 1; x < n; x *= 2 )
+	sum++;
+
+log(n)
+
+
+
+
+for ( int i = 0; i < n; i++)
+	for ( int x = n; x > 1; x /= 2 )
+		sum++;
+
+nlog(n)
+
+
+
+
+for (int x = n; x > 1; x /= 10 )
+	sum++
+
+log(n)
+
+
+
+
+for ( int x = 1; x < n; x *= 10 )
+	for ( int i = 0; i < n; i++ )
+		sum++;
+
+nlog(n)
+
+
+
+
+How does a Binary search work?
+
+	low = index of first item in list
+	high = index of last item in list
+	while low is less than or equal to high
+		mid = index halfway between low and high
+		if item is less than list[mid]
+			high = mid - 1
+		else if item is greater than list[mid]
+			low = mid + 1
+		

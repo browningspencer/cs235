@@ -1,0 +1,388 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Linked List Queue (6.3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Draw a diagram of a Linked-List Queue object on the board.
+
+What instance variables are needed inside a Linked-List Queue object?
+
+Which end of the list should be the front/back of the queue?
+
+
+
+Queue
+	___           ___
+   |   | HEAD    |   |  TAIL
+   |   |         | 4 |
+   |___|         |___|
+		\			\
+       ___ ___ ___ ___
+ 	  |   |   |   |   |
+FRONT | 4 | 2 | 8 | 4 | BACK
+ 	  |___|___|___|___|
+        0   1   2   3
+
+    ___
+   |   |  size
+   | 4 |
+   |___|
+
+
+
+
+
+
+How does the add method work?
+
+Show how add works on the diagram on the board.
+
+Write the code for the add method.
+
+
+
+
+
+ADD ITEM
+	n = new Node
+	n->next = NULL
+	n->item = item
+	if tail == NULL
+		head = n
+	else
+		tail->next = n
+
+	tail = n
+	size++
+
+
+
+
+How does the remove method work?
+
+Show how remove works on the diagram on the board.
+
+
+REMOVE ITEM
+	n = head
+	item = head->item
+	head = head->next
+
+	delete n
+	size--
+
+	return ITEM
+
+
+
+
+
+
+
+Classwork
+You may work with a partner.
+
+Write the code for the remove method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What's the Big-Oh bound for add and remove?
+
+
+ADD
+	O(1)
+REMOVE
+	O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Memory Management
+
+
+Why does the Queue need a destructor?
+
+Write the code for the destructor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Array Queue (6.3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Draw a diagram of an Array Queue object on the board.
+
+What instance variables are needed inside an Array Queue object?
+
+Which end of the array should be the front/back of the queue?
+
+
+
+
+
+
+Queue
+	___           ___			___
+   |   | ITEMS   |   |  FRONT  |   | BACK
+   |   |         | 1 |         | 4 |
+   |___|         |___|         |___|
+		\			
+       ___ ___ ___ ___
+ 	  |   |   |   |   |
+FRONT |   |   | 4 | 8 | 
+ 	  |___|___|___|___|
+        0   1   2   3
+
+    ___			___
+   |   |  CAP  |   |
+   | 4 |       | 1 |
+   |___|       |___|
+
+
+
+
+
+
+
+
+
+
+
+
+How does the add method work?
+
+Show how add works on the diagram on the board.
+
+Write the code for the add method.
+
+
+
+
+ADD ITEM
+	if size == CAP
+		grow
+	items[back] = item
+	back++
+	if (back == CAP) 
+		back = 0
+	size++
+
+
+
+
+
+
+
+How does the remove method work?
+
+Show how remove works on the diagram on the board.
+
+
+
+REMOVE ITEM
+	item = items[front]
+	front++
+	size--
+
+	return item
+
+
+
+
+
+
+
+
+
+
+
+
+
+Classwork
+You may work with a partner.
+
+Write the code for the remove method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What's the Big-Oh bound for add and remove?
+
+ADD 
+	AMORITIZED O(1)
+		Amoritized means that it will mostly be O(1) but there is a function included that can cause slight O(n)
+REMOVE
+	O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Does the front of the queue stay fixed at the start of the array?
+
+What happens to the front and back indexes
+when they reach the end of the array?
+
+How do you grow the size of the queue when it becomes full?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Memory Management
+
+
+Why does the Queue need a destructor?
+
+Write the code for the destructor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
