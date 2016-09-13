@@ -26,18 +26,37 @@
 #define Arena_h
 
 #include "ArenaInterface.h"
+//#include "FighterInterface.h"
+#include "Fighter.h"
+#include "Archer.h"
+#include "Cleric.h"
+#include "Robot.h"
 #include <iostream>
+#include <string>
+#include <vector>
+#pragma once
 
 using namespace std;
 
 
-class Arena {
+class Arena : public ArenaInterface {
     
 private:
+    vector<Fighter*> fighters;
     
     
 public:
+    Arena() {}
+    ~Arena(){}
     
+    virtual bool addFighter(string info);
+    
+    virtual bool removeFighter(string name);
+  
+    virtual FighterInterface* getFighter(string name);
+    
+    virtual int getSize();
+
     
 };
 

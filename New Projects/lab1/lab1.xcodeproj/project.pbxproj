@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460AC4691D81D3EF00F15789 /* Arena.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460AC4681D81D3EF00F15789 /* Arena.cpp */; };
+		460AC46B1D81D40D00F15789 /* Fighter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460AC46A1D81D40D00F15789 /* Fighter.cpp */; };
+		460AC46E1D81D9D800F15789 /* Archer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460AC46C1D81D9D800F15789 /* Archer.cpp */; };
+		460AC4711D81DA3D00F15789 /* Cleric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460AC46F1D81DA3D00F15789 /* Cleric.cpp */; };
+		460AC4741D81DA6F00F15789 /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460AC4721D81DA6F00F15789 /* Robot.cpp */; };
 		4645BC4E1D77677500E6EB6F /* Factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4645BC4A1D77677500E6EB6F /* Factory.cpp */; };
-		4645BC4F1D77677500E6EB6F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4645BC4D1D77677500E6EB6F /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,13 +28,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		460AC4671D81CF9400F15789 /* Fighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fighter.h; path = Student_Code/Fighter.h; sourceTree = "<group>"; };
+		460AC4681D81D3EF00F15789 /* Arena.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Arena.cpp; path = Student_Code/Arena.cpp; sourceTree = "<group>"; };
+		460AC46A1D81D40D00F15789 /* Fighter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fighter.cpp; path = Student_Code/Fighter.cpp; sourceTree = "<group>"; };
+		460AC46C1D81D9D800F15789 /* Archer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Archer.cpp; path = Student_Code/Archer.cpp; sourceTree = "<group>"; };
+		460AC46D1D81D9D800F15789 /* Archer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Archer.h; path = Student_Code/Archer.h; sourceTree = "<group>"; };
+		460AC46F1D81DA3D00F15789 /* Cleric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cleric.cpp; path = Student_Code/Cleric.cpp; sourceTree = "<group>"; };
+		460AC4701D81DA3D00F15789 /* Cleric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cleric.h; path = Student_Code/Cleric.h; sourceTree = "<group>"; };
+		460AC4721D81DA6F00F15789 /* Robot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Robot.cpp; path = Student_Code/Robot.cpp; sourceTree = "<group>"; };
+		460AC4731D81DA6F00F15789 /* Robot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Robot.h; path = Student_Code/Robot.h; sourceTree = "<group>"; };
 		4645BC481D77677500E6EB6F /* Arena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Arena.h; path = Student_Code/Arena.h; sourceTree = "<group>"; };
 		4645BC491D77677500E6EB6F /* ArenaInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArenaInterface.h; path = Student_Code/ArenaInterface.h; sourceTree = "<group>"; };
 		4645BC4A1D77677500E6EB6F /* Factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Factory.cpp; path = Student_Code/Factory.cpp; sourceTree = "<group>"; };
 		4645BC4B1D77677500E6EB6F /* Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Factory.h; path = Student_Code/Factory.h; sourceTree = "<group>"; };
 		4645BC4C1D77677500E6EB6F /* FighterInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FighterInterface.h; path = Student_Code/FighterInterface.h; sourceTree = "<group>"; };
-		4645BC4D1D77677500E6EB6F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Student_Code/main.cpp; sourceTree = "<group>"; };
-		4645BC501D7767B800E6EB6F /* Fighter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fighter.h; sourceTree = "<group>"; };
 		46DF78BA1D75CF2000E38B3A /* lab1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab1; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,13 +75,20 @@
 		46DF78BC1D75CF2000E38B3A /* lab1 */ = {
 			isa = PBXGroup;
 			children = (
-				4645BC481D77677500E6EB6F /* Arena.h */,
-				4645BC491D77677500E6EB6F /* ArenaInterface.h */,
-				4645BC4A1D77677500E6EB6F /* Factory.cpp */,
 				4645BC4B1D77677500E6EB6F /* Factory.h */,
+				4645BC4A1D77677500E6EB6F /* Factory.cpp */,
 				4645BC4C1D77677500E6EB6F /* FighterInterface.h */,
-				4645BC4D1D77677500E6EB6F /* main.cpp */,
-				4645BC501D7767B800E6EB6F /* Fighter.h */,
+				460AC4671D81CF9400F15789 /* Fighter.h */,
+				460AC46A1D81D40D00F15789 /* Fighter.cpp */,
+				460AC46D1D81D9D800F15789 /* Archer.h */,
+				460AC46C1D81D9D800F15789 /* Archer.cpp */,
+				460AC4701D81DA3D00F15789 /* Cleric.h */,
+				460AC46F1D81DA3D00F15789 /* Cleric.cpp */,
+				460AC4731D81DA6F00F15789 /* Robot.h */,
+				460AC4721D81DA6F00F15789 /* Robot.cpp */,
+				4645BC491D77677500E6EB6F /* ArenaInterface.h */,
+				4645BC481D77677500E6EB6F /* Arena.h */,
+				460AC4681D81D3EF00F15789 /* Arena.cpp */,
 			);
 			path = lab1;
 			sourceTree = "<group>";
@@ -131,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4645BC4F1D77677500E6EB6F /* main.cpp in Sources */,
+				460AC46E1D81D9D800F15789 /* Archer.cpp in Sources */,
+				460AC46B1D81D40D00F15789 /* Fighter.cpp in Sources */,
 				4645BC4E1D77677500E6EB6F /* Factory.cpp in Sources */,
+				460AC4711D81DA3D00F15789 /* Cleric.cpp in Sources */,
+				460AC4741D81DA6F00F15789 /* Robot.cpp in Sources */,
+				460AC4691D81D3EF00F15789 /* Arena.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

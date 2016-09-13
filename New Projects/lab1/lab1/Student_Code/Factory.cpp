@@ -1,5 +1,6 @@
 #include "Factory.h"
 // You may put your include statements here
+#include "Arena.h"
 using namespace std;
 
 /*
@@ -16,6 +17,6 @@ using namespace std;
  */
 ArenaInterface* Factory::createArena()
 {
-	return NULL;//Modify this line
+    return new Arena();
 }
 //=======================================================================================
