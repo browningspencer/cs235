@@ -21,7 +21,14 @@
  */
 int Robot::getDamage()
 {
-    int damage = Fighter::getStrength() + bonus_damage;
+    int damage = 0;
+    if (ability == true) {
+        damage = Fighter::getStrength() + bonus_damage;
+    }
+    else {
+        damage = Fighter::getStrength();
+    }
+    //cout << "getDamage() damage: " << damage << "\tbonus: " << bonus_damage << endl;
     return damage;
 }
 
@@ -67,14 +74,20 @@ void Robot::reset()
 bool Robot::useAbility()
 {
     double shockwave_punch = strength * pow((energy / max_energy), 4);
-    
+
     if (energy >= ROBOT_ABILITY_COST) {
         bonus_damage = shockwave_punch;
+        //cout << "Energy before: " << energy << endl;
         energy -= ROBOT_ABILITY_COST;
+        //cout << "Energy after: " << energy << endl;
+        //cout << "Used Shockwave Punch" << endl;
+        //cout << "Bonus Damage: " << bonus_damage << endl;
+        ability = true;
         return true;
     }
     else {
+        //cout << "Did not use ability" << endl;
+        ability = false;
         return false;
     }
 }
-

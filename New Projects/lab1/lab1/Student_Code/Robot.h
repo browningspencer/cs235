@@ -18,14 +18,16 @@ private:
     double energy;
     double max_energy;
     int bonus_damage;
-    
+    bool ability;
+
 public:
     Robot(string n, string t, int mh, int st, int sp, int m) : Fighter (n, t, mh, st, sp, m) {
         max_energy = magic * 2;
         energy = max_energy;
+        ability = false;
     }
     ~Robot() {}
-    
+
     int getDamage();
     void reset();
     bool useAbility();
