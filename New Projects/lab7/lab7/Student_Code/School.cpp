@@ -1,13 +1,56 @@
 //
-//  GPA.cpp
+//  School.cpp
 //  lab7
 //
 //  Created by Spencer Browning on 9/14/16.
 //  Copyright © 2016 Spencer Browning. All rights reserved.
 //
 
+//change GPA.h and GPA.cpp to School or Class? That would be more descriptive...
+
+/*
+ my_map(id) will return a 1 if it is found, 0 if it is not
+ 
+ 
+
+ 
+ for(set<"type">::iterator i = s.begin(); i != myset.end(); i++) {
+    *i
+    i->
+ }
+ OR
+ for(Student * st : myset) {
+ 
+ }
+ OR
+ for(auto st : myset) {
+ 
+ }
+ 
+ */
+
 #include <stdio.h>
-#include "GPA.h"
+#include "School.h"
+#include <iostream>
+#include <fstream>
+#include <istream>
+#include <sstream>
+#include <vector>
+#include <string>
+#include <iomanip>
+
+const double A = 4.0;
+const double Am = 3.7;
+const double Bp = 3.4;
+const double B = 3.0;
+const double Bm = 2.7;
+const double Cp = 2.4;
+const double C = 2.0;
+const double Cm = 1.7;
+const double Dp = 1.4;
+const double D = 1.0;
+const double Dm = 0.7;
+const double E = 0.0;
 
 
 /*
@@ -16,8 +59,8 @@
  * Returns the map storing the student information.
  * The key of the map should be the student ID.
  */
-map<unsigned long long int,StudentInterface*> getMap() {
-    
+map<unsigned long long int,StudentInterface*> School::getMap() {
+    return student_map;
 }
 
 /*
@@ -25,9 +68,10 @@ map<unsigned long long int,StudentInterface*> getMap() {
  *
  * Returns the set storing the student information.
  */
-set<StudentInterface*,Comparator> getSet() {
-    
+set<StudentInterface*,Comparator> School::getSet() {
+    return student_set;
 }
+
 
 /*
  * importStudents()
@@ -60,9 +104,53 @@ set<StudentInterface*,Comparator> getSet() {
  * Returns false if an invalid filename is given or if there is a missing entry for a
  * student, otherwise true.
  */
-bool importStudents(string mapFileName, string setFileName) {
+bool School::importStudents(string mapFileName, string setFileName) {
+    ifstream in;
     
+    unsigned long long int id;
+    string name;
+    string address;
+    string phone;
+    double gpa = 0;
+    
+    map<unsigned long long int,StudentInterface*> my_map;
+    set<StudentInterface*,Comparator> my_set;
+    
+    if (in.open(mapFileName)) {
+        if (in >> id) {
+            while (in >> id && getline(in, name) && getline(in, address) && getline(in, phone)) {
+                //map[id] = new Student( );
+                //set.insert(new Student( ));
+                my_map[id] = new Student(id, name, address, phone, gpa);
+            }
+            in.close();
+            return true;
+        }
+        else {
+            in.close();
+            return false;
+        }
+    }
+    
+    if(in.open(setFileName)) {
+        if (in >> id) {
+            while(in >> id && getline(in, name) && getline(in, address) && getline(in, phone)) {
+                my_set.insert(new Student(id, name, address, phone, gpa));
+            }
+            in.close();
+            return true;
+        }
+        else {
+            in.close();
+            return false;
+        }
+    }
+    
+    return false;
 }
+
+
+
 
 /*
  * importGrades()
@@ -103,9 +191,68 @@ bool importStudents(string mapFileName, string setFileName) {
  *
  * Returns false if an invalid filename is given, otherwise true.
  */
-bool importGrades(string fileName) {
-
+bool School::importGrades(string fileName) {
+    ifstream in;
+    vector<School> grades;
+    
+    string ID;
+    string course;
+    int number_of_courses = 0;
+    string letter_grade;
+    
+    if (in.open(fileName)) {
+    
+        while (getline(in, ID)) {
+            getline(in, course);
+            getline(in, letter_grade);
+            
+            //calculate grades??
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
 }
+
+
+/* Grade.cpp
+ #include "Grade.h"
+ #include <sstream>
+ #include <vector>
+ #include <fstream>
+ using namespace std;
+ 
+ Grade::Grade(string course, string id, string letter_grade)
+ {
+ this->course = course;
+ this->id = id;
+ this->letter_grade = letter_grade;
+ }
+ 
+ Grade::~Grade()
+ {
+ }
+ 
+ string Grade::toString() const
+ {
+ stringstream ss;
+ ss << Grade::toString();
+ 
+ ss << id << "\t" << letter_grade << "\t" << course << endl;
+ 
+ return ss.str();
+ }
+ 
+ 
+ 
+ 
+ bool Grade::operator < (const Grade& g) const {
+ return id < g.id ||
+ (id == g.id && course < g.course) ||
+ (id == g.id && course == g.course && letter_grade < g.letter_grade);
+ }
+ */
 
 /*
  * querySet()
@@ -131,7 +278,7 @@ bool importGrades(string fileName) {
  * then return an empty string. The precision of the GPA will be set to two decimal places.
  * There will be a trailing new line.
  */
-string querySet(string fileName) {
+string School::querySet(string fileName) {
     
 }
 
@@ -159,15 +306,17 @@ string querySet(string fileName) {
  * then return an empty string. The precision of the GPA will be set to two decimal places.
  * There will be a trailing new line.
  */
-string queryMap(string fileName) {
+string School::queryMap(string fileName) {
     
 }
 
 /*
  * Clears the students from the map and set.
  */
-void clear() {
-    
+void School::clear() {
+    //Iterate over both map and set and call delete on all pointers in each
+    //map.clear()
+    //set.clear()
 }
 
 

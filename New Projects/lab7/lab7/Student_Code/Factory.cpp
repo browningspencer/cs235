@@ -1,6 +1,6 @@
 #include "Factory.h"
 // You may put your include statements here
-#include "GPA.h"
+#include "School.h"
 using namespace std;
 
 /*
@@ -16,6 +16,6 @@ using namespace std;
 	Example: If you made a class called "GPA", you might say, "return new GPA();".
 */
 GPAInterface * Factory::getGPA() {
-    return new GPA();
+    return new School();
 }
 //=======================================================================================

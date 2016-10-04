@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		464C18BD1D89EF8F00DC1B48 /* Student.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464C18BC1D89EF8F00DC1B48 /* Student.cpp */; };
 		464C18C31D89EFA500DC1B48 /* Factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464C18BE1D89EFA500DC1B48 /* Factory.cpp */; };
-		464C18C41D89EFA500DC1B48 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464C18C11D89EFA500DC1B48 /* main.cpp */; };
-		464C18C81D89F00100DC1B48 /* GPA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464C18C71D89F00100DC1B48 /* GPA.cpp */; };
+		464C18C81D89F00100DC1B48 /* School.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 464C18C71D89F00100DC1B48 /* School.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,11 +30,10 @@
 		464C18BE1D89EFA500DC1B48 /* Factory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Factory.cpp; path = Student_Code/Factory.cpp; sourceTree = SOURCE_ROOT; };
 		464C18BF1D89EFA500DC1B48 /* Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Factory.h; path = Student_Code/Factory.h; sourceTree = SOURCE_ROOT; };
 		464C18C01D89EFA500DC1B48 /* GPAInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPAInterface.h; path = Student_Code/GPAInterface.h; sourceTree = SOURCE_ROOT; };
-		464C18C11D89EFA500DC1B48 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Student_Code/main.cpp; sourceTree = SOURCE_ROOT; };
 		464C18C21D89EFA500DC1B48 /* StudentInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentInterface.h; path = Student_Code/StudentInterface.h; sourceTree = SOURCE_ROOT; };
 		464C18C51D89EFC600DC1B48 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Student.h; path = Student_Code/Student.h; sourceTree = SOURCE_ROOT; };
-		464C18C61D89EFEB00DC1B48 /* GPA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GPA.h; path = Student_Code/GPA.h; sourceTree = SOURCE_ROOT; };
-		464C18C71D89F00100DC1B48 /* GPA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GPA.cpp; path = Student_Code/GPA.cpp; sourceTree = SOURCE_ROOT; };
+		464C18C61D89EFEB00DC1B48 /* School.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = School.h; path = Student_Code/School.h; sourceTree = SOURCE_ROOT; };
+		464C18C71D89F00100DC1B48 /* School.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = School.cpp; path = Student_Code/School.cpp; sourceTree = SOURCE_ROOT; };
 		46F951BD1D89ECF000BE817F /* lab7 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lab7; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,12 +68,11 @@
 		46F951BF1D89ECF000BE817F /* lab7 */ = {
 			isa = PBXGroup;
 			children = (
-				464C18C11D89EFA500DC1B48 /* main.cpp */,
 				464C18BF1D89EFA500DC1B48 /* Factory.h */,
 				464C18BE1D89EFA500DC1B48 /* Factory.cpp */,
 				464C18C01D89EFA500DC1B48 /* GPAInterface.h */,
-				464C18C61D89EFEB00DC1B48 /* GPA.h */,
-				464C18C71D89F00100DC1B48 /* GPA.cpp */,
+				464C18C61D89EFEB00DC1B48 /* School.h */,
+				464C18C71D89F00100DC1B48 /* School.cpp */,
 				464C18C21D89EFA500DC1B48 /* StudentInterface.h */,
 				464C18C51D89EFC600DC1B48 /* Student.h */,
 				464C18BC1D89EF8F00DC1B48 /* Student.cpp */,
@@ -139,10 +136,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				464C18C81D89F00100DC1B48 /* GPA.cpp in Sources */,
+				464C18C81D89F00100DC1B48 /* School.cpp in Sources */,
 				464C18C31D89EFA500DC1B48 /* Factory.cpp in Sources */,
 				464C18BD1D89EF8F00DC1B48 /* Student.cpp in Sources */,
-				464C18C41D89EFA500DC1B48 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

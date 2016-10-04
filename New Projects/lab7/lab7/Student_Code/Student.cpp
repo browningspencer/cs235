@@ -7,6 +7,9 @@
 //
 
 #include <stdio.h>
+#include <sstream>
+#include <iomanip>
+#include <string>
 #include "Student.h"
 
 /*
@@ -14,7 +17,7 @@
  *
  * Returns the ID of the Student.
  */
-unsigned long long int getID() {
+unsigned long long int Student::getID() {
     return ID;
     
 }
@@ -25,7 +28,7 @@ unsigned long long int getID() {
  * Returns the name of the Student
  */
 
-string getName() {
+string Student::getName() {
     return name;
 }
 
@@ -35,8 +38,12 @@ string getName() {
  * Returns the string representation of the Student's GPA.
  */
 
-string getGPA() {
-    return GPA;
+string Student::getGPA() {
+    
+    double num = GPAsum / GPAcount;
+    
+    string temp = to_string(num);
+    return temp;
 }
 
 /*
@@ -45,7 +52,9 @@ string getGPA() {
  * Incorporates the given course grade into the Student's overall GPA.
  */
 
-void addGPA(double classGrade);
+void Student::addGPA(double classGrade) {
+    
+}
 
 /*
  * toString()
@@ -63,4 +72,30 @@ void addGPA(double classGrade);
  *
  * Returns a string representation of the student object There is no trailing new line.
  */
-string toString();
+string Student::toString() {
+    //stringstream out;
+    //out << fixed << setprecision(2) << calculated gpa;
+    stringstream out;
+    
+    out << ID << endl;
+    out << name << endl;
+    out << address << endl;
+    out << phone << endl;
+    out << fixed << setprecision(2) << GPA;
+    
+    return out.str();
+}
+
+/*
+string Document::toString() const
+{
+    stringstream ss;
+    
+    ss << Document::toString();
+    ss << words << endl;
+    ss << lines << endl;
+    
+    return ss.str();
+}
+*/
+
