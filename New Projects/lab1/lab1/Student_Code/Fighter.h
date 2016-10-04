@@ -17,7 +17,7 @@ using namespace std;
 
 
 class Fighter : public FighterInterface {
-    
+
 protected:
     string name;
     string type;
@@ -25,9 +25,9 @@ protected:
     int strength;
     int speed;
     int magic;
-    
+
     int current_hp;
-    
+
 public:
     Fighter(string n, string t, int mh, int st, int sp, int m) {
         name = n;
@@ -36,13 +36,13 @@ public:
         strength = st;
         speed = sp;
         magic = m;
-        
+
         current_hp = max_hp;
     }
     ~Fighter() {}
-    
+
     virtual string getName();
-    
+
     virtual int getMaximumHP();
 
     virtual int getCurrentHP();
@@ -62,7 +62,7 @@ public:
     virtual void regenerate();
 
     virtual bool useAbility() = 0;
-    
+
 };
 
 

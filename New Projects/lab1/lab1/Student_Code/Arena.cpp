@@ -23,18 +23,31 @@ using namespace std;
 bool Arena::addFighter(string info)
 {
     //ss = "cow A 100 10 20 5"
-    
+
     string name;
     string type;
     int max_hp = 0;
     int strength = 0;
     int speed = 0;
     int magic = 0;
-    
+    int temp = 0;
+
     stringstream ss(info);
     if (ss >> name) {
-        while (ss >> type) {
+      //cout << "???" << endl;
+      //cout << "Name: " << name << endl;
+        //while (ss >> type) {
+        ss >> type;
+            //cout << "Type: " << type << endl;
             ss >> max_hp >> strength >> speed >> magic;
+            //cout << "HP: " << max_hp << " ";
+            //cout << "Strength: " << strength << " ";
+            //cout << "Speed: " << speed << " ";
+            //cout << "Magic: " << magic << endl;
+            if (ss >> temp) {
+              //cout << "false" << endl;
+              return false;
+            }
             Fighter* new_fighter; // = new Fighter(name, type, max_hp, current_hp, strength, speed, magic);
             if (type == "A") {
                 new_fighter = new Archer(name, type, max_hp, strength, speed, magic);
@@ -45,13 +58,46 @@ bool Arena::addFighter(string info)
             else if (type == "R") {
                 new_fighter = new Robot(name, type, max_hp, strength, speed, magic);
             }
+            else {
+              //cout << "false" << endl;
+              return false;
+            }
+
+            for (int i = 0; i < fighters.size(); i++) {
+              if (name == fighters[i]->getName()) {
+                //cout << "false" << endl;
+                return false;
+              }
+            }
+
+            if (max_hp <= 0) {
+              //cout << "false" << endl;
+                return false;
+              }
+            if (strength <= 0) {
+              //cout << "false" << endl;
+                return false;
+              }
+            if (speed <= 0) {
+              //cout << "false" << endl;
+                return false;
+              }
+            if (magic <= 0) {
+              //cout << "false" << endl;
+                return false;
+              }
+              //cout << "Before Add Size: " << fighters.size() << endl;
             fighters.push_back(new_fighter);
-        }
+            //cout << "After Add Size: " << fighters.size() << endl;
+        //}
+        //cout << "true" << endl;
         return true;
     }
     else {
+        //cout << "false!" << endl;
         return false;
     }
+    //cout << "ERROR" << endl;
 }
 
 /*
@@ -66,7 +112,7 @@ bool Arena::removeFighter(string name)
 {
     for (int i = 0; i < fighters.size(); i++) {
         if (name == fighters[i]->getName()) {
-            delete fighters[i];
+            fighters.erase(fighters.begin() + i);
             return true;
         }
     }
@@ -100,5 +146,6 @@ FighterInterface* Arena::getFighter(string name)
  */
 int Arena::getSize()
 {
+
     return fighters.size();
 }
