@@ -10,23 +10,23 @@
 
 /*
  my_map(id) will return a 1 if it is found, 0 if it is not
- 
- 
 
- 
+
+
+
  for(set<"type">::iterator i = s.begin(); i != myset.end(); i++) {
     *i
     i->
  }
  OR
  for(Student * st : myset) {
- 
+
  }
  OR
  for(auto st : myset) {
- 
+
  }
- 
+
  */
 
 #include <stdio.h>
@@ -106,21 +106,28 @@ set<StudentInterface*,Comparator> School::getSet() {
  */
 bool School::importStudents(string mapFileName, string setFileName) {
     ifstream in;
-    
+
     unsigned long long int id;
     string name;
     string address;
     string phone;
     double gpa = 0;
-    
+
     map<unsigned long long int,StudentInterface*> my_map;
     set<StudentInterface*,Comparator> my_set;
-    
-    if (in.open(mapFileName)) {
+
+    in.open(mapFileName);
+    if (in.good()) {
         if (in >> id) {
             while (in >> id && getline(in, name) && getline(in, address) && getline(in, phone)) {
                 //map[id] = new Student( );
                 //set.insert(new Student( ));
+                cout << "MAP" << endl;
+                cout << "\t" << id << endl;
+                cout << "\t" << name << endl;
+                cout << "\t" << address << endl;
+                cout << "\t" << phone << endl;
+                cout << "\t" << gpa << endl;
                 my_map[id] = new Student(id, name, address, phone, gpa);
             }
             in.close();
@@ -131,8 +138,9 @@ bool School::importStudents(string mapFileName, string setFileName) {
             return false;
         }
     }
-    
-    if(in.open(setFileName)) {
+
+    in.open(setFileName);
+    if(in.good()) {
         if (in >> id) {
             while(in >> id && getline(in, name) && getline(in, address) && getline(in, phone)) {
                 my_set.insert(new Student(id, name, address, phone, gpa));
@@ -145,7 +153,7 @@ bool School::importStudents(string mapFileName, string setFileName) {
             return false;
         }
     }
-    
+    in.close();
     return false;
 }
 
@@ -194,18 +202,19 @@ bool School::importStudents(string mapFileName, string setFileName) {
 bool School::importGrades(string fileName) {
     ifstream in;
     vector<School> grades;
-    
+
     string ID;
     string course;
     int number_of_courses = 0;
     string letter_grade;
-    
-    if (in.open(fileName)) {
-    
+
+    in.open(fileName);
+    if (in.good()) {
+
         while (getline(in, ID)) {
             getline(in, course);
             getline(in, letter_grade);
-            
+
             //calculate grades??
         }
         return true;
@@ -222,31 +231,31 @@ bool School::importGrades(string fileName) {
  #include <vector>
  #include <fstream>
  using namespace std;
- 
+
  Grade::Grade(string course, string id, string letter_grade)
  {
  this->course = course;
  this->id = id;
  this->letter_grade = letter_grade;
  }
- 
+
  Grade::~Grade()
  {
  }
- 
+
  string Grade::toString() const
  {
  stringstream ss;
  ss << Grade::toString();
- 
+
  ss << id << "\t" << letter_grade << "\t" << course << endl;
- 
+
  return ss.str();
  }
- 
- 
- 
- 
+
+
+
+
  bool Grade::operator < (const Grade& g) const {
  return id < g.id ||
  (id == g.id && course < g.course) ||
@@ -279,7 +288,7 @@ bool School::importGrades(string fileName) {
  * There will be a trailing new line.
  */
 string School::querySet(string fileName) {
-    
+
 }
 
 /*
@@ -307,7 +316,7 @@ string School::querySet(string fileName) {
  * There will be a trailing new line.
  */
 string School::queryMap(string fileName) {
-    
+
 }
 
 /*
@@ -318,5 +327,3 @@ void School::clear() {
     //map.clear()
     //set.clear()
 }
-
-

@@ -23,30 +23,28 @@ protected:
     string address;
     string phone;
     double GPA;
-    
-    double GPAsum;
-    int GPAcount;
-    
+    double number_of_courses;
+
+
 
 public:
-    Student(unsigned long long int i, string n, string a, string p, double g) {
+    Student(unsigned long long int i, string n, string a, string p) : StudentInterface() {
         ID = i;
         name = n;
         address = a;
         phone = p;
-        GPA = g;
-        
-        GPAsum += GPA;
-        GPAcount += 1;
+        GPA = 0.00;
+        number_of_courses = 0.00;
+
     }
-    ~Student() {}
+    ~Student(void) {}
 
     virtual unsigned long long int getID();
 
     virtual string getName();
 
     virtual string getGPA();
-    
+
     virtual void addGPA(double classGrade);
 
     virtual string toString();

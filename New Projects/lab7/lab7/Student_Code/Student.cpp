@@ -19,7 +19,7 @@
  */
 unsigned long long int Student::getID() {
     return ID;
-    
+
 }
 
 /*
@@ -29,7 +29,7 @@ unsigned long long int Student::getID() {
  */
 
 string Student::getName() {
-    return name;
+    return this->name;
 }
 
 /*
@@ -39,11 +39,15 @@ string Student::getName() {
  */
 
 string Student::getGPA() {
-    
-    double num = GPAsum / GPAcount;
-    
-    string temp = to_string(num);
-    return temp;
+    stringstream ss;
+    if (number_of_courses == 0) {
+        ss << setprecision(2) << fixed << GPA;
+        return ss.str();
+    }
+    else {
+        ss << setprecision(2) << fixed << (GPA / number_of_courses);
+        return ss.str();
+    }
 }
 
 /*
@@ -53,7 +57,9 @@ string Student::getGPA() {
  */
 
 void Student::addGPA(double classGrade) {
-    
+    number_of_courses++;
+    double newGPA = classGrade + GPA);
+    GPA = newGPA;
 }
 
 /*
@@ -76,13 +82,13 @@ string Student::toString() {
     //stringstream out;
     //out << fixed << setprecision(2) << calculated gpa;
     stringstream out;
-    
-    out << ID << endl;
-    out << name << endl;
-    out << address << endl;
-    out << phone << endl;
-    out << fixed << setprecision(2) << GPA;
-    
+
+    out << ID;
+    out << "\n" << name;
+    out << "\n" << address;
+    out << "\n" << phone;
+    out << getGPA();
+
     return out.str();
 }
 
@@ -90,12 +96,11 @@ string Student::toString() {
 string Document::toString() const
 {
     stringstream ss;
-    
+
     ss << Document::toString();
     ss << words << endl;
     ss << lines << endl;
-    
+
     return ss.str();
 }
 */
-
