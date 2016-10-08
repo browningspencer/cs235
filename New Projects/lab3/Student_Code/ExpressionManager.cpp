@@ -107,8 +107,53 @@ bool ExpressionManager::isBalanced(string expression) {
  * otherwise, return the correct infix expression as a string.
  */
 string ExpressionManager::postfixToInfix(string postfixExpression) {
+    stack <string> mystack;
+    stringstream ss(postfixExpression);
+    string curr;
+    string right;
+    string left;
+    string newExp;
 
-    return postfixExpression;
+    if (!isBalanced(postfixExpression)) {
+        return "invalid";
+    }
+
+    if (isInvalid(postfixExpression)) {
+        return "invalid";
+    }
+    while (ss >> curr) {
+        if (curr == "NULL") {
+            return "invalid";
+        }
+        if (mystack.empty()) { }
+        if (is_number(curr)) {
+            mystack.push(curr);
+        }
+        else if (is_operator(curr)) {
+            if (mystack.empty()) {
+                return "invalid";
+            }
+            else {
+                right = mystack.top();
+                mystack.pop();
+                if (mystack.empty()) {
+                    return "invalid";
+                }
+                left = mystack.top();
+                mystack.pop();
+                newExp = "( " + left + " " + curr + " " + right + " " + ")";
+                mystack.push(newExp);
+            }
+        }
+        else {
+            return "invalid";
+        }
+    }
+    if (mystack.empty()) {
+      return "invalid";
+    }
+    newExp = mystack.top();
+    return newExp;
 }
 
 /*
