@@ -26,12 +26,13 @@ using namespace std;
 
 class Student : public StudentInterface {
 protected:
-    unsigned long long int ID;
+    //unsigned long long int ID;
+    int ID;
     string name;
     string address;
     string phone;
     double GPA;
-    double number_of_courses;
+    int number_of_courses;
 
 
 

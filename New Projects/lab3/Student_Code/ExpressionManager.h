@@ -1,8 +1,8 @@
+#pragma once
 #include "ExpressionManagerInterface.h"
 #include <sstream>
-#pragma #ifndef
 
-#define
+using namespace std;
 
 class ExpressionManager : public ExpressionManagerInterface {
 
@@ -68,7 +68,3 @@ public:
      */
     virtual string postfixEvaluate(string postfixExpression);
 };
-
-
-#endif /* end of include guard:
- */

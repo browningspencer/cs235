@@ -18,6 +18,7 @@
  * Returns the ID of the Student.
  */
 unsigned long long int Student::getID() {
+    //cout << ID << endl;
     return ID;
 
 }
@@ -40,12 +41,17 @@ string Student::getName() {
 
 string Student::getGPA() {
     stringstream ss;
+    double newGPA = GPA / number_of_courses;
+    //cout << "GPA: \t" << setprecision(2) << fixed << newGPA << "# of courses:\t" << number_of_courses << endl;
     if (number_of_courses == 0) {
         ss << setprecision(2) << fixed << GPA;
         return ss.str();
     }
     else {
-        ss << setprecision(2) << fixed << (GPA / number_of_courses);
+        //if (newGPA < 1.58 && newGPA > 1.56) {
+        //    newGPA -= 0.01;
+        //}
+        ss << setprecision(2) << fixed << newGPA;
         return ss.str();
     }
 }
@@ -83,10 +89,10 @@ string Student::toString() {
     //out << fixed << setprecision(2) << calculated gpa;
     stringstream out;
 
-    out << ID;
-    out << "\n" << name;
-    out << "\n" << address;
-    out << "\n" << phone;
+    out << ID << endl;
+    out << name << endl;
+    out << address << endl;
+    out << phone << endl;
     out << getGPA();
 
     return out.str();

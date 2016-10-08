@@ -226,7 +226,7 @@ bool School::importStudents(string mapFileName, string setFileName) {
 
 double calculateGPA(string letter_grade) {
     if (letter_grade == "A") { return A; }
-    else if (letter_grade == "A-") { return A; }
+    else if (letter_grade == "A-") { return Am; }
     else if (letter_grade == "B+") { return Bp; }
     else if (letter_grade == "B")  { return B; }
     else if (letter_grade == "B-") { return Bm; }
@@ -353,18 +353,25 @@ string School::querySet(string fileName) {
 
         while (in.good()) {
             getline(in, ID);
+            //if (ID.substr(0, 1) == "0") {
+            //    cout << ID.substr(0, ID.length()) << endl;
+            //}
+
             unsigned long long int studentID = atoll(ID.c_str());
             for (set<StudentInterface*, Comparator>::iterator it = student_set.begin(); it != student_set.end(); it++) {
                 StudentInterface* temp = *it;
                 if (temp->getID() == studentID) {
                     stringstream ss;
                     ss << temp->getID();
+
+                    //cout << "Before:\t" << studentID << endl;
                     string studentID = ss.str();
+                    //cout << "After:\t" << studentID << endl;
 
                     stringstream gss;
                     gss << setprecision(2) << fixed << temp->getGPA();
                     string precisionGPA = gss.str();
-                    string output = ID + " " + precisionGPA + " " + temp->getName() + "\n";
+                    string output = studentID + " " + precisionGPA + " " + temp->getName() + "\n";
 
                     out << output;
                 }
