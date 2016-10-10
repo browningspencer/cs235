@@ -9,57 +9,58 @@ ExpressionManager::ExpressionManager(){}
 ExpressionManager::~ExpressionManager(){}
 
 bool ExpressionManager::isOpening(string paren) {
-    if (paren == "(" || paren == "[" || paren == "{") {
-        return true;
-    }
-    else {
-        return false;
-    }
+  if (paren == "(" || paren == "[" || paren == "{") {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool ExpressionManager::isClosing(string paren) {
-    if (paren == ")" || paren == "]" || paren == "}") {
-        return true;
-    }
-    else {
-        return false;
-    }
+  if (paren == ")" || paren == "]" || paren == "}") {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool ExpressionManager::isEmpty(stringstream ss) {
-    string temp;
-    ss >> temp;
-    if (temp == "NULL") {
-        return true;
-    }
-    else {
-        return false;
-    }
+  string temp;
+  ss >> temp;
+
+  if (temp == "NULL") {
+    return true;
+  }
+  else {
     return false;
+  }
+  return false;
 }
 
 bool parenChecker(string first, string second) {
-    if (first == "(" && second == ")") {
-        return true;
-    }
-    else if (first == "[" && second == "]") {
-        return true;
-    }
-    else if (first == "{" && second == "}") {
-        return true;
-    }
-    else {
-        return false;
-    }
+  if (first == "(" && second == ")") {
+    return true;
+  }
+  else if (first == "[" && second == "]") {
+    return true;
+  }
+  else if (first == "{" && second == "}") {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool isParen(string s) {
-    if (s == "(" || s == "{" || s == "[" || s == ")" || s == "}" || s == "]") {
-      return true;
-    }
-    else {
-      return false;
-    }
+  if (s == "(" || s == "[" || s == "{" || s == "}" || s == "]" || s == ")") {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 string Operators = "+-*/%";
@@ -68,7 +69,7 @@ bool is_operator(string s) {
 }
 
 bool is_number (const string& s) {
-  return (strspn(s.c_str(), "0123456789" ) == s.size());
+  return (strspn(s.c_str(), "0123456789") == s.size());
 }
 
 int precendence(string op) {
@@ -78,7 +79,7 @@ int precendence(string op) {
   else if (op == "*" || op == "/" || op == "%") {
     return 2;
   }
-  else if (op == ")" || op == "}" || op == "]") {
+  else if (op == ")" || op == "]" || op == "}") {
     return 3;
   }
   else {
@@ -88,23 +89,23 @@ int precendence(string op) {
 
 bool isInvalid(string exp) {
   stringstream ss(exp);
-  string curr;
+  string temp;
   int numCount = 0;
   int opCount = 0;
   int parenCount = 0;
 
-  while (ss >> curr) {
-    if (is_number(curr)) {
+  while (ss >> temp) {
+    if (is_number(temp)) {
       numCount++;
     }
-    else if (is_operator(curr)) {
+    else if (is_operator(temp)) {
       opCount++;
     }
-    else if (isParen(curr)) {
+    else if (isParen(temp)) {
       parenCount++;
     }
   }
-  if ((numCount - opCount) == 1) {
+  if (numCount - opCount == 1) {
     return false;
   }
   else {
@@ -121,36 +122,37 @@ bool isInvalid(string exp) {
   * @return false otherwise
   */
 bool ExpressionManager::isBalanced(string expression) {
-    stack <string> mystack;
-    stringstream ss(expression);
-    string temp;
-    while (ss >> temp) {
-        if (isOpening(temp)) {
-            mystack.push(temp);
-        }
-        else if (isClosing(temp)) {
-            if (mystack.empty()) {
-                return false;
-                break;
-            }
-            else {
-                string top = mystack.top();
-                if (parenChecker(top, temp)) {
-                    mystack.pop();
-                }
-                else {
-                    return false;
-                    break;
-                }
-            }
-        }
+  stack <string> mystack;
+  stringstream ss(expression);
+  string temp;
+
+  while (ss >> temp) {
+    if (isOpening(temp)) {
+      mystack.push(temp);
     }
-    if (!mystack.empty()) {
+    else if (isClosing(temp)) {
+      if (mystack.empty()) {
         return false;
+        break;
+      }
+      else {
+        string top = mystack.top();
+        if (parenChecker(top, temp)) {
+          mystack.pop();
+        }
+        else {
+          return false;
+          break;
+        }
+      }
     }
-    else {
-        return true;
-    }
+  }
+  if (!mystack.empty()) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 /**
@@ -166,53 +168,54 @@ bool ExpressionManager::isBalanced(string expression) {
  * otherwise, return the correct infix expression as a string.
  */
 string ExpressionManager::postfixToInfix(string postfixExpression) {
-    stack <string> mystack;
-    stringstream ss(postfixExpression);
-    string curr;
-    string right;
-    string left;
-    string newExp;
+  stack <string> mystack;
+  stringstream ss(postfixExpression);
+  string temp;
+  string right;
+  string left;
+  string newExp;
 
-    if (!isBalanced(postfixExpression)) {
-        return "invalid";
-    }
+  if (!isBalanced(postfixExpression)) {
+    return "invalid";
+  }
 
-    if (isInvalid(postfixExpression)) {
-        return "invalid";
-    }
-    while (ss >> curr) {
-        if (curr == "NULL") {
-            return "invalid";
-        }
-        if (mystack.empty()) { }
-        if (is_number(curr)) {
-            mystack.push(curr);
-        }
-        else if (is_operator(curr)) {
-            if (mystack.empty()) {
-                return "invalid";
-            }
-            else {
-                right = mystack.top();
-                mystack.pop();
-                if (mystack.empty()) {
-                    return "invalid";
-                }
-                left = mystack.top();
-                mystack.pop();
-                newExp = "( " + left + " " + curr + " " + right + " " + ")";
-                mystack.push(newExp);
-            }
-        }
-        else {
-            return "invalid";
-        }
-    }
-    if (mystack.empty()) {
+  if (isInvalid(postfixExpression)) {
+    return "invalid";
+  }
+
+  while (ss >> temp) {
+    if (temp == "NULL") {
       return "invalid";
     }
-    newExp = mystack.top();
-    return newExp;
+    if (mystack.empty()) {}
+    if (is_number(temp)) {
+      mystack.push(temp);
+    }
+    else if (is_operator(temp)) {
+      if (mystack.empty()) {
+        return "invalid";
+      }
+      else {
+        right = mystack.top();
+        mystack.pop();
+        if (mystack.empty()) {
+          return "invalid";
+        }
+        left = mystack.top();
+        mystack.pop();
+        newExp = "( " + left + " " + temp + " " + right + " " + ")";
+        mystack.push(newExp);
+      }
+    }
+    else {
+      return "invalid";
+    }
+  }
+  if (mystack.empty()) {
+    return "invalid";
+  }
+  newExp = mystack.top();
+  return newExp;
 }
 
 
@@ -240,8 +243,7 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
   stack <string> mystack;
   stringstream ss(infixExpression);
   stringstream os;
-  string curr;
-  //string topItem;
+  string temp;
 
   if (!isBalanced(infixExpression)) {
     return "invalid";
@@ -250,34 +252,34 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
     return "invalid";
   }
 
-  while (ss >> curr) {
-    if (is_number(curr)) {
-      os << curr << " ";
+  while (ss >> temp) {
+    if (is_number(temp)) {
+      os << temp << " ";
     }
-    else if (is_operator(curr)) {
+    else if (is_operator(temp)) {
       if (mystack.empty()) {
-        mystack.push(curr);
+        mystack.push(temp);
       }
       else if (isParen(mystack.top())) {
-        mystack.push(curr);
+        mystack.push(temp);
       }
-      else if (precendence(curr) > precendence(mystack.top())) {
-        mystack.push(curr);
+      else if (precendence(temp) > precendence(mystack.top())) {
+        mystack.push(temp);
       }
       else {
-        while (!mystack.empty() && (precendence(curr)) <= precendence(mystack.top())) {
+        while (!mystack.empty() && (precendence(temp)) <= precendence(mystack.top())) {
           string topItem = mystack.top();
           os << topItem << " ";
           mystack.pop();
         }
-        mystack.push(curr);
+        mystack.push(temp);
       }
     }
-    else if (isOpening(curr)) {
-      mystack.push(curr);
+    else if (isOpening(temp)) {
+      mystack.push(temp);
     }
-    else if (isClosing(curr)) {
-      while (!parenChecker(mystack.top(), curr)) {
+    else if (isClosing(temp)) {
+      while (!parenChecker(mystack.top(), temp)) {
         string topItem = mystack.top();
         os << topItem << " ";
         mystack.pop();
@@ -300,36 +302,35 @@ string ExpressionManager::infixToPostfix(string infixExpression) {
 }
 
 int ExpressionManager::eval_op(string op) {
-    stringstream evalstream;
-    stack <string> mystack;
-    int answer;
-    string right = mystack.top();
-    mystack.pop();
-    string left = mystack.top();
-    mystack.pop();
+  stringstream evalstream;
+  stack <string> mystack;
+  int answer;
+  string right = mystack.top();
+  mystack.pop();
+  string left = mystack.top();
+  mystack.pop();
 
-    int R = atoi(right.c_str());
-    int L = atoi(left.c_str());
+  int R = atoi(right.c_str());
+  int L = atoi(left.c_str());
 
-    if (op == "+") {
-      answer = L + R;
+  if (op == "+") {
+    answer = L + R;
+  }
+  if (op == "-") {
+    answer = L - R;
+  }
+  if (op == "*") {
+    answer = L * R;
+  }
+  if (op == "/") {
+    if (R == 0 || L == 0) {
+      return 0;
     }
-    if (op == "-") {
-      answer = L - R;
+    else {
+      answer = L / R;
     }
-    if (op == "*") {
-      answer = L * R;
-    }
-    if (op == "/") {
-      if (R == 0 || L == 0) {
-        return 0;
-        //return 1000;
-      }
-      else {
-        answer = L / R;
-      }
-    }
-    return answer;
+  }
+  return answer;
 }
 //virtual int eval(string expression);
 
@@ -345,7 +346,7 @@ int ExpressionManager::eval_op(string op) {
 string ExpressionManager::postfixEvaluate(string postfixExpression) {
   stringstream ps(postfixExpression);
   stack <string> mystack;
-  string curr;
+  string temp;
   string right;
   string left;
   int answer;
@@ -356,11 +357,11 @@ string ExpressionManager::postfixEvaluate(string postfixExpression) {
   if (isInvalid(postfixExpression)) {
     return "invalid";
   }
-  while (ps >> curr) {
-    if (is_number(curr)) {
-      mystack.push(curr);
+  while (ps >> temp) {
+    if (is_number(temp)) {
+      mystack.push(temp);
     }
-    else if (is_operator(curr)) {
+    else if (is_operator(temp)) {
       if (mystack.empty()) {
         return "invalid";
       }
@@ -375,26 +376,26 @@ string ExpressionManager::postfixEvaluate(string postfixExpression) {
       int R = atoi(right.c_str());
       int L = atoi(left.c_str());
 
-      if (curr == "+") {
+      if (temp == "+") {
         answer = L + R;
       }
-      if (curr == "-") {
+      if (temp == "-") {
         answer = L - R;
       }
-      if (curr == "*") {
+      if (temp == "*") {
         answer = L * R;
       }
-      if (curr == "%") {
-        answer = L % R;
-      }
-      if (curr == "/") {
+      if (temp == "/") {
         if (R == 0) {
           answer = 0;
           return "invalid";
         }
-        else  {
+        else {
           answer = L / R;
         }
+      }
+      if (temp == "%") {
+        answer = L % R;
       }
       stringstream os;
       os << answer;
