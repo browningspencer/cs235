@@ -137,11 +137,16 @@ public:
       return;
     }
     else {
+      if (!(checkIfInList(insertionNode))) {
+        delete temp;
+        return;
+      }
       while (insertionNode != q->info) {
         q = q->next;
       }
 
       Node *x = q;
+      x = x->next;
       q->next = temp;
       temp->next = x;
     }
@@ -154,6 +159,10 @@ public:
 
   void remove(T value) {
     //cout << "\tREMOVE" << endl;
+    if (!(checkIfInList(value))) {
+      return;
+    }
+
     Node *q = head;
     Node *x = q;
 
@@ -255,5 +264,4 @@ public:
   int size() {
     return count;
   }
-
 };
